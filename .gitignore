@@ -3,6 +3,7 @@ node_modules
 .source
 .output
 .vinxi
+.wrangler
 dist
 artifacts
 .env
