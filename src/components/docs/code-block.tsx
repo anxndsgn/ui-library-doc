@@ -38,8 +38,8 @@ export function CodeBlock({ code, language, title, children, style, tabIndex }: 
     : highlightCodeToHtml(source, resolvedLanguage);
 
   return (
-    <figure className="m-0 overflow-hidden rounded-lg border border-line bg-code text-code-ink">
-      <figcaption className="flex min-h-11 items-center justify-between border-b border-line py-0 pr-2 pl-3.5 text-xs font-bold text-code-ink/70">
+    <figure className="m-0 overflow-hidden rounded-lg border border-border bg-muted text-foreground">
+      <figcaption className="flex min-h-11 items-center justify-between border-b border-border py-0 pr-2 pl-3.5 text-xs font-bold text-foreground/70">
         <span>{title ?? displayLanguage}</span>
         <CopyButton value={source} label="Copy code" />
       </figcaption>

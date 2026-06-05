@@ -51,7 +51,7 @@ export function DocsShell({
     <AnchorProvider toc={toc} single>
       <main className="grid min-h-[calc(100vh-64px)] grid-cols-[264px_minmax(0,1fr)] [@media(min-width:1340px)]:grid-cols-[264px_minmax(0,1fr)_240px] max-md:grid-cols-1">
         <aside
-          className="border-r border-line max-md:border-r-0 max-md:border-b"
+          className="border-r border-border max-md:border-r-0 max-md:border-b"
           aria-label="Documentation navigation"
         >
           <div className="sticky top-16 grid max-h-[calc(100vh-64px)] gap-6 overflow-auto py-4 pr-4 pb-10 pl-4 max-md:static max-md:max-h-none max-md:gap-3.5 max-md:overflow-visible max-md:px-3.5 max-md:py-4.5">
@@ -73,17 +73,19 @@ export function DocsShell({
 
         {toc.length > 0 ? (
           <aside
-            className="hidden border-l border-line [@media(min-width:1340px)]:block"
+            className="hidden border-l border-border [@media(min-width:1340px)]:block"
             aria-label="Table of contents"
           >
             <div className="sticky top-16 max-h-[calc(100vh-64px)] overflow-auto px-6 py-12">
-              <p className="m-0 mb-3 text-xs font-bold uppercase text-muted">On this page</p>
+              <p className="m-0 mb-3 text-xs font-bold uppercase text-muted-foreground">
+                On this page
+              </p>
               <nav className="grid gap-1" aria-label="Page sections">
                 {toc.map((item) => (
                   <TOCItem
                     key={item.url}
                     href={item.url}
-                    className="block rounded-md py-1.5 pr-2 text-sm font-semibold text-muted no-underline transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-ink/[0.06] hover:text-ink active:scale-[0.96] data-[active=true]:text-ink"
+                    className="block rounded-md py-1.5 pr-2 text-sm font-semibold text-muted-foreground no-underline transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent hover:text-accent-foreground active:scale-[0.96] data-[active=true]:text-accent-foreground"
                     style={{
                       paddingLeft: `${8 + Math.max(0, item.depth - 2) * 12}px`,
                     }}
@@ -103,9 +105,9 @@ export function DocsShell({
 function DocsSidebarNode({ node, currentUrl }: { node: DocsNavNode; currentUrl: string }) {
   if (node.type === "separator") {
     return node.title ? (
-      <p className="m-0 px-2.5 text-xs font-bold uppercase text-muted">{node.title}</p>
+      <p className="m-0 px-2.5 text-xs font-bold uppercase text-muted-foreground">{node.title}</p>
     ) : (
-      <div className="h-px bg-line" aria-hidden="true" />
+      <div className="h-px bg-border" aria-hidden="true" />
     );
   }
 
@@ -113,13 +115,15 @@ function DocsSidebarNode({ node, currentUrl }: { node: DocsNavNode; currentUrl: 
     const title = node.url ? (
       <a
         href={node.url}
-        className="flex min-h-9 items-center rounded-md px-2.5 text-xs font-bold uppercase text-muted transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-ink/[0.06] hover:text-ink active:scale-[0.96] data-[active=true]:bg-ink/[0.06] data-[active=true]:text-ink"
+        className="flex min-h-9 items-center rounded-md px-2.5 text-xs font-bold uppercase text-muted-foreground transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent hover:text-accent-foreground active:scale-[0.96] data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
         data-active={normalizeUrl(node.url) === normalizeUrl(currentUrl)}
       >
         {node.title}
       </a>
     ) : (
-      <p className="m-0 px-2.5 py-1 text-xs font-bold uppercase text-muted/70">{node.title}</p>
+      <p className="m-0 px-2.5 py-1 text-xs font-bold uppercase text-muted-foreground/70">
+        {node.title}
+      </p>
     );
 
     return (
@@ -141,7 +145,7 @@ function DocsSidebarNode({ node, currentUrl }: { node: DocsNavNode; currentUrl: 
   return (
     <a
       href={node.url}
-      className="flex min-h-9 items-center rounded-md px-2.5 text-sm font-semibold text-muted transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-ink/[0.06] hover:text-ink active:scale-[0.96] data-[active=true]:bg-ink/[0.06] data-[active=true]:text-ink max-md:flex-none"
+      className="flex min-h-9 items-center rounded-md px-2.5 text-sm font-semibold text-muted-foreground transition-[background-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent hover:text-accent-foreground active:scale-[0.96] data-[active=true]:bg-accent data-[active=true]:text-accent-foreground max-md:flex-none"
       data-active={normalizeUrl(node.url) === normalizeUrl(currentUrl)}
     >
       {node.title}

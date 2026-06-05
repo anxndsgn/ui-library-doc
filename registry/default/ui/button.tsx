@@ -1,12 +1,11 @@
 import * as React from "react";
 
 const variants = {
-  default:
-    "bg-emerald-700 text-white hover:bg-emerald-800 focus-visible:outline-emerald-700 dark:bg-emerald-400 dark:text-emerald-950 dark:hover:bg-emerald-300 dark:focus-visible:outline-emerald-400",
+  default: "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-ring",
   secondary:
-    "bg-stone-100 text-stone-950 hover:bg-stone-200 focus-visible:outline-stone-500 dark:bg-stone-800 dark:text-stone-50 dark:hover:bg-stone-700 dark:focus-visible:outline-stone-400",
+    "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:outline-ring",
   quiet:
-    "bg-transparent text-stone-700 hover:bg-stone-100 focus-visible:outline-stone-500 dark:text-stone-300 dark:hover:bg-stone-800 dark:focus-visible:outline-stone-400",
+    "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:outline-ring",
 } as const;
 
 const sizes = {

@@ -26,7 +26,7 @@ export function CopyButton({
   return (
     <button
       type="button"
-      className="relative inline-grid h-10 w-10 cursor-pointer place-items-center rounded-md border-0 bg-transparent text-inherit transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-code-ink/10 active:scale-[0.96]"
+      className="relative inline-grid h-10 w-10 cursor-pointer place-items-center rounded-md border-0 bg-transparent text-inherit transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-foreground/10 active:scale-[0.96]"
       aria-label={label}
       onClick={async () => {
         await navigator.clipboard.writeText(value);

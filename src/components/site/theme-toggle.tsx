@@ -32,7 +32,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="relative inline-grid h-10 w-10 flex-none cursor-pointer place-items-center rounded-md border border-line bg-surface text-muted transition-[background-color,border-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-raised hover:text-ink active:scale-[0.96]"
+      className="relative inline-grid h-10 w-10 flex-none cursor-pointer place-items-center rounded-md border border-border bg-card text-muted-foreground transition-[background-color,border-color,color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent hover:text-accent-foreground active:scale-[0.96]"
       aria-label={label}
       aria-pressed={isDark}
       title={label}
@@ -79,7 +79,7 @@ function getStoredTheme(): ResolvedTheme | null {
     const storedTheme = window.localStorage.getItem(themeStorageKey);
 
     return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
-  } catch (_) {
+  } catch {
     return null;
   }
 }
@@ -95,5 +95,5 @@ function applyTheme(theme: ResolvedTheme) {
 function storeTheme(theme: ResolvedTheme) {
   try {
     window.localStorage.setItem(themeStorageKey, theme);
-  } catch (_) {}
+  } catch {}
 }

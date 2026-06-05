@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { CodeSnippet } from "../components/docs/code-snippet";
 
 const buttonLinkClass =
-  "inline-flex min-h-[42px] items-center justify-center gap-2 rounded-md bg-accent px-3.5 text-sm font-bold text-accent-ink transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-accent-strong active:scale-[0.96] max-md:w-full";
+  "inline-flex min-h-[42px] items-center justify-center gap-2 rounded-md bg-primary px-3.5 text-sm font-bold text-primary-foreground transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-primary/90 active:scale-[0.96] max-md:w-full";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -18,14 +18,16 @@ function HomePage() {
         aria-labelledby="overview-title"
       >
         <div className="flex min-h-[460px] flex-col justify-center py-8 max-md:min-h-0">
-          <p className="m-0 mb-3 text-xs font-bold uppercase text-accent">Documentation template</p>
+          <p className="m-0 mb-3 text-xs font-bold uppercase text-muted-foreground">
+            Documentation template
+          </p>
           <h1
             id="overview-title"
             className="m-0 max-w-[780px] text-balance text-[clamp(2.25rem,6vw,5.4rem)] leading-[0.96] max-md:text-4xl max-md:leading-[1.02]"
           >
             Component docs with previews and registry output.
           </h1>
-          <p className="mt-5 max-w-[660px] text-pretty text-[1.06rem] leading-7 text-muted">
+          <p className="mt-5 max-w-[660px] text-pretty text-[1.06rem] leading-7 text-muted-foreground">
             A ready app shell for component libraries: MDX content, preview and source views, props
             documentation, command snippets, and shadcn registry generation.
           </p>
@@ -65,13 +67,13 @@ function HomePage() {
 
 function Feature({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return (
-    <div className="grid grid-cols-[42px_minmax(0,1fr)] gap-3.5 rounded-lg border border-line bg-surface p-[18px]">
-      <div className="grid h-[42px] w-[42px] place-items-center rounded-md bg-accent-soft text-accent">
+    <div className="grid grid-cols-[42px_minmax(0,1fr)] gap-3.5 rounded-lg border border-border bg-card p-[18px]">
+      <div className="grid h-[42px] w-[42px] place-items-center rounded-md bg-accent text-accent-foreground">
         {icon}
       </div>
       <div>
         <h2 className="m-0 text-base">{title}</h2>
-        <p className="mt-1.5 text-pretty text-[0.92rem] leading-6 text-muted">{text}</p>
+        <p className="mt-1.5 text-pretty text-[0.92rem] leading-6 text-muted-foreground">{text}</p>
       </div>
     </div>
   );
