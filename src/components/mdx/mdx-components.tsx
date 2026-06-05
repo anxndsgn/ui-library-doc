@@ -4,7 +4,7 @@ import { CodeSnippet, CodeSnippetCommand } from "../docs/code-snippet";
 import { ComponentPreview } from "../docs/component-preview";
 import { ComponentSource } from "../docs/component-source";
 import { ComponentTabs } from "../docs/component-tabs";
-import { PropsTable } from "../docs/props-table";
+import { MdxTable, MdxTbody, MdxTd, MdxTh, MdxThead, MdxTr } from "./table-components";
 
 export function getMDXComponents(): MDXComponents {
   return {
@@ -14,7 +14,12 @@ export function getMDXComponents(): MDXComponents {
     CodeBlock,
     CodeSnippet,
     CodeSnippetCommand,
-    PropsTable,
+    table: MdxTable,
+    thead: MdxThead,
+    tbody: MdxTbody,
+    tr: MdxTr,
+    th: MdxTh,
+    td: MdxTd,
     pre: CodeBlock,
     code: InlineCode,
   };
