@@ -38,8 +38,9 @@ A component registry and documentation site built with TanStack Start, React 19,
 
 ## Styling
 
-- Tailwind CSS v4 — theme defined in `src/styles/app.css` using `@theme {}` block (no tailwind.config file)
-- Custom color tokens: `paper`, `surface`, `raised`, `ink`, `muted`, `line`, `accent`
+- Tailwind CSS v4 — theme defined in `src/styles/app.css` using `@theme inline` (no tailwind.config file)
+- shadcn CSS variables are the source of truth: `--background`, `--foreground`, `--card`, `--primary`, `--secondary`, `--muted`, `--accent`, `--border`, `--input`, `--ring`, etc.
+- Base color is neutral (`components.json` → `tailwind.baseColor: "neutral"`); prefer standard shadcn classes like `bg-background`, `text-foreground`, `bg-card`, `text-muted-foreground`, `border-border`, `bg-primary`, `text-primary-foreground`, `bg-accent`, and `text-accent-foreground`
 - Dark mode via `data-theme="dark"` attribute on `<html>`
 - Use `cn()` utility from `@/lib/utils` for conditional class merging (clsx + tailwind-merge)
 
