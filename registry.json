@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "components-site-template",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A compact button primitive with variant and size props.",
+      "files": [
+        {
+          "path": "registry/default/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:component",
+      "title": "Button Demo",
+      "description": "A small usage example for the button primitive.",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/button-demo.tsx"
+        }
+      ]
+    }
+  ]
+}
