@@ -68,7 +68,7 @@ function normalizeLanguage(language: string) {
   return languageAliases[normalized] ?? normalized;
 }
 
-function highlightCodeToHtml(code: string, language: string) {
+export function highlightCodeToHtml(code: string, language: string) {
   const lang = normalizeLanguage(language);
 
   if (["json", "jsonc", "json5"].includes(lang)) {

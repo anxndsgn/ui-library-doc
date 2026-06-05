@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "../../lib/utils";
+import { highlightCodeToHtml } from "./code-block";
 import { CopyButton } from "./copy-button";
 
 type CodeSnippetSlot = {
@@ -105,6 +106,7 @@ function CodeSnippetRoot({
   const activeSlot = findActiveSlot(slots, selectedValue);
   const activeValue = activeSlot?.value ?? selectedValue;
   const activeCommand = activeSlot?.command ?? command;
+  const highlightedCommand = highlightCodeToHtml(activeCommand, "shellscript");
   const hasTabs = slots.length > 1;
 
   if (!activeCommand) return null;
@@ -143,7 +145,10 @@ function CodeSnippetRoot({
       <span
         className={cn("inline-flex min-w-0 flex-1 items-center gap-1.5", hasTabs && "min-h-10")}
       >
-        <code className="min-w-0 flex-1 truncate whitespace-nowrap px-1">{activeCommand}</code>
+        <code
+          className="min-w-0 flex-1 truncate whitespace-nowrap px-1"
+          dangerouslySetInnerHTML={{ __html: highlightedCommand }}
+        />
         <CopyButton value={activeCommand} label="Copy command" size={14} />
       </span>
     </span>
