@@ -13,11 +13,11 @@ export function MdxThead({ className, ...props }: React.ComponentProps<"thead">)
 }
 
 export function MdxTbody({ className, ...props }: React.ComponentProps<"tbody">) {
-  return <tbody className={cn("[&_tr:last-child_td]:border-b-0", className)} {...props} />;
+  return <tbody className={className} {...props} />;
 }
 
 export function MdxTr({ className, ...props }: React.ComponentProps<"tr">) {
-  return <tr className={cn("border-b border-border", className)} {...props} />;
+  return <tr className={cn("border-b border-border last:border-b-0", className)} {...props} />;
 }
 
 export function MdxTh({ className, ...props }: React.ComponentProps<"th">) {
