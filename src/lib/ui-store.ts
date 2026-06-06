@@ -40,13 +40,35 @@ function getInitialResolvedTheme(): ResolvedTheme {
 }
 
 function getInitialPackageManager() {
-  if (typeof window === "undefined") return defaultPackageManager;
+  return defaultPackageManager;
+}
+
+function readLegacyPackageManager() {
+  if (typeof window === "undefined") return null;
 
   try {
-    return window.localStorage.getItem(legacyPackageManagerStorageKey) ?? defaultPackageManager;
+    const packageManager = window.localStorage.getItem(legacyPackageManagerStorageKey);
+
+    return packageManager && packageManager.length > 0 ? packageManager : null;
   } catch {
-    return defaultPackageManager;
+    return null;
   }
+}
+
+function mergePersistedUiState(persistedState: unknown, currentState: UiStore): UiStore {
+  const persistedUiState =
+    persistedState && typeof persistedState === "object"
+      ? (persistedState as Partial<Pick<UiStore, "theme" | "packageManager">>)
+      : {};
+  const persistedPackageManager =
+    typeof persistedUiState.packageManager === "string" ? persistedUiState.packageManager : null;
+
+  return {
+    ...currentState,
+    ...persistedUiState,
+    packageManager:
+      persistedPackageManager ?? readLegacyPackageManager() ?? currentState.packageManager,
+  };
 }
 
 export const useUiStore = create<UiStore>()(
@@ -69,6 +91,7 @@ export const useUiStore = create<UiStore>()(
     {
       name: uiStorageKey,
       storage: createJSONStorage(getStorage),
+      merge: mergePersistedUiState,
       partialize: ({ theme, packageManager }) => ({ theme, packageManager }),
     },
   ),

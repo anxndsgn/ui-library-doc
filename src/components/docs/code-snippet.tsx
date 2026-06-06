@@ -1,6 +1,5 @@
 import { Tabs } from "@base-ui/react/tabs";
 import { Children, isValidElement, useMemo, type ReactElement, type ReactNode } from "react";
-import { buttonVariants } from "registry/default/ui/button";
 import { defaultPackageManager, useUiStore } from "../../lib/ui-store";
 import { cn } from "../../lib/utils";
 import { highlightCodeToHtml } from "./code-block";
