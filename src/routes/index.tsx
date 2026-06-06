@@ -1,10 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Blocks, FileCode2, TableProperties } from "lucide-react";
-import type { ReactNode } from "react";
-import { CodeSnippet } from "../components/docs/code-snippet";
-
-const buttonLinkClass =
-  "inline-flex min-h-[42px] items-center justify-center gap-2 rounded-md bg-primary px-3.5 text-sm font-bold text-primary-foreground transition-[background-color,scale] duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-primary/90 active:scale-[0.96] max-md:w-full";
+import { ArrowRight, BookOpen, Box, Terminal } from "lucide-react";
+import { Button } from "registry/default/ui/button";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -12,69 +8,70 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   return (
-    <main className="mx-auto w-[min(1120px,calc(100vw_-_40px))] py-14 max-md:w-[min(calc(100%_-_28px),940px)] max-md:pt-9">
-      <section
-        className="grid [grid-template-columns:minmax(0,1.2fr)_minmax(280px,0.8fr)] items-stretch gap-8 max-md:grid-cols-1"
-        aria-labelledby="overview-title"
-      >
-        <div className="flex min-h-[460px] flex-col justify-center py-8 max-md:min-h-0">
-          <p className="m-0 mb-3 text-xs font-bold text-muted-foreground uppercase">
-            Documentation template
-          </p>
-          <h1
-            id="overview-title"
-            className="m-0 max-w-[780px] text-[clamp(2.25rem,6vw,5.4rem)] leading-[0.96] text-balance max-md:text-4xl max-md:leading-[1.02]"
-          >
-            Component docs with previews and registry output.
-          </h1>
-          <p className="mt-5 max-w-[660px] text-[1.06rem] leading-7 text-pretty text-muted-foreground">
-            A ready app shell for component libraries: MDX content, preview and source views, props
-            documentation, command snippets, and shadcn registry generation.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3 max-md:flex-col max-md:items-stretch">
-            <Link to="/docs/$" params={{ _splat: "components/button" }} className={buttonLinkClass}>
-              View sample docs
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-            <CodeSnippet command="npm run registry:build" />
-          </div>
-        </div>
+    <main className="mx-auto flex max-w-5xl flex-col items-center px-4 py-24 text-center max-md:py-16 md:px-0">
+      <div className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+        <Box size={20} aria-hidden="true" />
+      </div>
 
-        <div
-          className="grid min-h-[460px] content-center gap-2.5 max-md:min-h-0"
-          aria-label="Template features"
-        >
-          <Feature
-            icon={<Blocks size={18} aria-hidden="true" />}
-            title="Previewable docs"
-            text="Use MDX pages with embedded demos and source tabs."
-          />
-          <Feature
-            icon={<FileCode2 size={18} aria-hidden="true" />}
-            title="Fuma MDX source"
-            text="Load content through fumadocs-mdx and fumadocs-core."
-          />
-          <Feature
-            icon={<TableProperties size={18} aria-hidden="true" />}
-            title="Structured APIs"
-            text="Keep prop tables close to each component page."
-          />
-        </div>
+      <h1 className="m-0 text-[clamp(2rem,5vw,3rem)] leading-[1.1] font-semibold tracking-tight text-balance">
+        Build your own UI library docs
+      </h1>
+
+      <p className="mt-5 max-w-xl text-base leading-7 text-pretty text-muted-foreground">
+        A minimal documentation site for your UI library.Build on top of fumadocs, base-ui,
+        tailwindcss and tanstack start.
+      </p>
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Button
+          nativeButton={false}
+          size={"lg"}
+          render={
+            <Link to="/docs/$" params={{ _splat: "components/button" }}>
+              Get started
+              <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          }
+        />
+        <Button
+          variant={"secondary"}
+          size={"lg"}
+          nativeButton={false}
+          render={
+            <a href="https://github.com/anxndsgn" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          }
+        />
+      </div>
+
+      <section className="mt-20 grid w-full grid-cols-3 divide-x-0 rounded-lg bg-muted max-md:grid-cols-1 max-md:divide-y md:divide-x">
+        <Feature
+          icon={<BookOpen size={16} aria-hidden="true" />}
+          title="MDX Docs"
+          text="Write docs in MDX with frontmatter, live previews, and code tabs."
+        />
+        <Feature
+          icon={<Terminal size={16} aria-hidden="true" />}
+          title="Registry"
+          text="Generate shadcn-compatible registry JSON from your components."
+        />
+        <Feature
+          icon={<Box size={16} aria-hidden="true" />}
+          title="SSR"
+          text="Server-side rendering for your documentation site with Tanstack Start."
+        />
       </section>
     </main>
   );
 }
 
-function Feature({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
+function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
-    <div className="grid grid-cols-[42px_minmax(0,1fr)] gap-3.5 rounded-lg border border-border bg-card p-[18px]">
-      <div className="grid h-[42px] w-[42px] place-items-center rounded-md bg-accent text-accent-foreground">
-        {icon}
-      </div>
-      <div>
-        <h2 className="m-0 text-base">{title}</h2>
-        <p className="mt-1.5 text-[0.92rem] leading-6 text-pretty text-muted-foreground">{text}</p>
-      </div>
+    <div className="flex flex-col items-center gap-2.5 p-5">
+      <div className="grid size-8 place-items-center text-accent-foreground">{icon}</div>
+      <h2 className="m-0 text-sm font-semibold">{title}</h2>
+      <p className="m-0 max-w-60 text-sm leading-6 text-pretty text-muted-foreground">{text}</p>
     </div>
   );
 }
