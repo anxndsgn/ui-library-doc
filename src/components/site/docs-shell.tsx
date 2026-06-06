@@ -66,52 +66,54 @@ export function DocsShell({
     <AnchorProvider toc={toc} single>
       <div className="grid h-full min-h-0 grid-rows-[auto_minmax(0,1fr)] overflow-hidden">
         <DocsHeader />
-        <main className="grid min-h-0 grid-rows-[auto_minmax(0,1fr)] overflow-hidden md:grid-cols-[264px_minmax(0,1fr)] md:grid-rows-1 [@media(min-width:1340px)]:grid-cols-[264px_minmax(0,1fr)_240px]">
+        <main className="grid min-h-0 grid-rows-[auto_minmax(0,1fr)] overflow-hidden md:grid-cols-[264px_minmax(0,1fr)] md:grid-rows-1">
           <DocsMobileNav navTree={navTree} currentUrl={currentUrl} />
 
-        <aside
-          className="hidden min-h-0 border-r border-border md:col-start-1 md:row-start-1 md:block"
-          aria-label="Documentation navigation"
-        >
-          <ScrollArea className="h-full min-h-0">
-            <div className="grid gap-6 py-4 pr-4 pb-10 pl-4">
-              <nav className="grid gap-1" aria-label="Docs pages">
-                {navTree.nodes.map((node, index) => (
-                  <DocsSidebarNode
-                    key={getNavNodeKey(node, index)}
-                    node={node}
-                    currentUrl={currentUrl}
-                  />
-                ))}
-              </nav>
-            </div>
-          </ScrollArea>
-        </aside>
-
-        <DocsMobileToc toc={toc} />
-
-        <div className="row-start-2 min-h-0 min-w-0 overflow-auto md:col-start-2 md:row-start-1">
-          <section className="mx-auto w-[min(100%,940px)] min-w-0 px-10 py-12 pb-18 max-md:w-[min(calc(100%-28px),940px)] max-md:px-0 max-md:py-9 max-md:pb-14">
-            {children}
-          </section>
-        </div>
-
-        {toc.length > 0 ? (
           <aside
-            className="hidden min-h-0 border-l border-border [@media(min-width:1340px)]:col-start-3 [@media(min-width:1340px)]:row-start-1 [@media(min-width:1340px)]:block"
-            aria-label="Table of contents"
+            className="hidden min-h-0 border-r border-border md:col-start-1 md:row-start-1 md:block"
+            aria-label="Documentation navigation"
           >
             <ScrollArea className="h-full min-h-0">
-              <div className="p-4">
-                <p className="m-0 mb-3 px-2 text-xs font-bold text-muted-foreground uppercase">
-                  On this page
-                </p>
-                <DocsTocNav toc={toc} />
+              <div className="grid gap-6 py-4 pr-4 pb-10 pl-4">
+                <nav className="grid gap-1" aria-label="Docs pages">
+                  {navTree.nodes.map((node, index) => (
+                    <DocsSidebarNode
+                      key={getNavNodeKey(node, index)}
+                      node={node}
+                      currentUrl={currentUrl}
+                    />
+                  ))}
+                </nav>
               </div>
             </ScrollArea>
           </aside>
-        ) : null}
-      </main>
+
+          <DocsMobileToc toc={toc} />
+
+          <div className="row-start-2 min-h-0 min-w-0 overflow-auto md:col-start-2 md:row-start-1">
+            <div className="min-h-full [@media(min-width:1340px)]:grid [@media(min-width:1340px)]:grid-cols-[minmax(0,1fr)_240px]">
+              <section className="mx-auto w-[min(100%,940px)] min-w-0 px-10 py-12 pb-18 max-md:w-[min(calc(100%-28px),940px)] max-md:px-0 max-md:py-9 max-md:pb-14">
+                {children}
+              </section>
+
+              {toc.length > 0 ? (
+                <aside
+                  className="sticky top-0 hidden h-[calc(100dvh-3.5rem-1px)] min-h-0 border-l border-border [@media(min-width:1340px)]:block"
+                  aria-label="Table of contents"
+                >
+                  <ScrollArea className="h-full min-h-0">
+                    <div className="p-4">
+                      <p className="m-0 mb-3 px-2 text-xs font-bold text-muted-foreground uppercase">
+                        On this page
+                      </p>
+                      <DocsTocNav toc={toc} />
+                    </div>
+                  </ScrollArea>
+                </aside>
+              ) : null}
+            </div>
+          </div>
+        </main>
       </div>
     </AnchorProvider>
   );
