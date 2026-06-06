@@ -1,6 +1,6 @@
 import { Drawer } from "@base-ui/react/drawer";
 import { AnchorProvider, TOCItem, useActiveAnchor } from "fumadocs-core/toc";
-import { XIcon, TableOfContentsIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { buttonVariants } from "registry/default/ui/button";
 import {
