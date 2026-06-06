@@ -1,6 +1,6 @@
 import { Drawer } from "@base-ui/react/drawer";
 import { AnchorProvider, TOCItem, useActiveAnchor } from "fumadocs-core/toc";
-import { XIcon } from "lucide-react";
+import { XIcon, TableOfContentsIcon } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { buttonVariants } from "registry/default/ui/button";
 import {
@@ -15,6 +15,7 @@ import { ScrollArea } from "registry/default/ui/scroll-area";
 
 import { useDocsSidebar } from "./docs-sidebar-context";
 import { DocsHeader } from "./docs-header";
+import { cn } from "registry/default/lib/utils";
 
 export type DocsNavItem = {
   title: string;
@@ -98,14 +99,15 @@ export function DocsShell({
 
               {toc.length > 0 ? (
                 <aside
-                  className="sticky top-0 hidden h-[calc(100dvh-3.5rem-1px)] min-h-0 border-l border-border [@media(min-width:1340px)]:block"
+                  className="sticky top-0 hidden h-[calc(100dvh-3.5rem-1px)] min-h-0 [@media(min-width:1340px)]:block"
                   aria-label="Table of contents"
                 >
                   <ScrollArea className="h-full min-h-0">
-                    <div className="p-4">
-                      <p className="m-0 mb-3 px-2 text-xs font-bold text-muted-foreground uppercase">
+                    <div className="p-4 pt-8">
+                      <p className="m-0 mb-6 text-xs font-bold text-muted-foreground uppercase">
                         On this page
                       </p>
+
                       <DocsTocNav toc={toc} />
                     </div>
                   </ScrollArea>
@@ -207,22 +209,16 @@ function DocsMobileToc({ toc }: { toc: Array<DocsTocItem> }) {
   );
 }
 
-function DocsTocNav({
-  toc,
-  className = "grid gap-1",
-}: {
-  toc: Array<DocsTocItem>;
-  className?: string;
-}) {
+function DocsTocNav({ toc, className }: { toc: Array<DocsTocItem>; className?: string }) {
   return (
-    <nav className={className} aria-label="Page sections">
+    <nav className={cn("grid gap-3", className)} aria-label="Page sections">
       {toc.map((item) => (
         <TOCItem
           key={item.url}
           href={item.url}
-          className="block rounded-md p-2 text-sm text-muted-foreground no-underline hover:bg-accent hover:text-accent-foreground data-[active=true]:font-semibold data-[active=true]:text-accent-foreground"
+          className="block text-xs text-muted-foreground no-underline hover:text-accent-foreground data-[active=true]:border-accent data-[active=true]:font-semibold data-[active=true]:text-accent-foreground"
           style={{
-            paddingLeft: `${8 + Math.max(0, item.depth - 2) * 8}px`,
+            paddingLeft: `${Math.max(0, item.depth - 2) * 8}px`,
           }}
         >
           {item.title}
