@@ -1,4 +1,63 @@
 ---
 title: Styles
-description: The starting point for your component library docs.
+description: Semantic color tokens, typography, radius, and dark mode for your component library.
+registry: theme
 ---
+
+import themeSource from "registry/default/styles/style.css?raw";
+
+The design system is built on shadcn-style CSS variables. Tokens are defined in `registry/default/styles/style.css`, imported by `src/styles/app.css`, and distributed to consumers as the `theme` registry item.
+
+## Installation
+
+Install the theme before UI components so CSS variables and base styles are available:
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">
+    pnpm dlx shadcn@latest add http://localhost:3000/r/theme.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">
+    npx shadcn@latest add http://localhost:3000/r/theme.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">
+    bunx shadcn@latest add http://localhost:3000/r/theme.json
+  </CodeSnippet.Command>
+</CodeSnippet>
+
+## Semantic colors
+
+Use Tailwind utility classes that map to CSS variables. Prefer semantic names over hard-coded values so light and dark mode stay consistent.
+
+| Token | CSS variable | Tailwind class | Typical use |
+| --- | --- | --- | --- |
+| Background | `--background` | `bg-background` | Page and panel surfaces |
+| Foreground | `--foreground` | `text-foreground` | Primary text |
+| Primary | `--primary` | `bg-primary` | Main actions and emphasis |
+| Secondary | `--secondary` | `bg-secondary` | Lower-emphasis surfaces |
+| Muted | `--muted` | `bg-muted` | Subtle fills and secondary text |
+| Accent | `--accent` | `bg-accent` | Hover states and highlights |
+| Border | `--border` | `border-border` | Dividers and outlines |
+| Ring | `--ring` | `ring-ring` | Focus rings |
+
+## Typography and radius
+
+Body text uses the sans stack from `src/styles/app.css`. Inline code and source blocks use the mono stack.
+
+Corner radius is controlled by `--radius` (default `0.625rem`). Tailwind maps it to `rounded-sm` through `rounded-4xl`.
+
+## Dark mode
+
+Dark mode is enabled with `data-theme="dark"` on `<html>`. When no theme is set, the site follows `prefers-color-scheme`.
+
+Toggle the theme from the docs header to preview token changes. UI components should rely on semantic classes like `bg-background` and `text-muted-foreground` rather than light-only colors.
+
+## Customization
+
+1. Edit token values in `registry/default/styles/style.css`.
+2. Adjust site-only styles in `src/styles/app.css` (fonts, code highlighting, layout).
+3. Run `pnpm registry:build` so the `theme` item in `public/r/` stays current.
+4. Set `"registryDependencies": ["utils", "theme"]` on new UI components in `registry.json`.
+
+## Source
+
+<ComponentSource code={themeSource} language="css" title="style.css" />

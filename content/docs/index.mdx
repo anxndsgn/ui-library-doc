@@ -1,23 +1,97 @@
 ---
 title: Introduction
-description: The starting point for your component library docs.
+description: Document UI components with live previews, install commands, and a shadcn-compatible registry.
 ---
 
-This template keeps component documentation close to installable source. Pages live in `content/docs`, examples live in `registry/default`, and registry output is generated from `registry.json`.
+import { ButtonDemo } from "registry/default/examples/button-demo";
+import buttonDemoSource from "registry/default/examples/button-demo.tsx?raw";
+
+This template is a starting point for your own component library docs site. Documentation lives in MDX, installable source lives in the registry, and `registry.json` generates shadcn-compatible JSON for consumers.
+
+## Live preview
+
+Component pages pair a runnable demo with the exact source users can copy or install.
+
+<ComponentTabs>
+  <ComponentPreview name="button-demo">
+    <ButtonDemo />
+  </ComponentPreview>
+  <ComponentSource code={buttonDemoSource} language="tsx" title="button-demo.tsx" />
+</ComponentTabs>
+
+## Quick start
 
 <CodeSnippet>
-  <CodeSnippet.Command value="pnpm">pnpm dev</CodeSnippet.Command>
-  <CodeSnippet.Command value="npm">npm run dev</CodeSnippet.Command>
-  <CodeSnippet.Command value="bun">bun run dev</CodeSnippet.Command>
+  <CodeSnippet.Command value="pnpm">pnpm install && pnpm dev</CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">npm install && npm run dev</CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">bun install && bun run dev</CodeSnippet.Command>
 </CodeSnippet>
+
+The dev server runs at [http://localhost:3000](http://localhost:3000). Docs are available under `/docs`.
+
+## How it fits together
+
+| Location            | Purpose                                        |
+| ------------------- | ---------------------------------------------- |
+| `content/docs/`     | MDX pages, navigation, and frontmatter         |
+| `registry/default/` | Component source users install into their apps |
+| `registry.json`     | Registry manifest consumed by the shadcn CLI   |
+| `public/r/`         | Generated registry JSON served at `/r/*.json`  |
+
+Keep docs and registry source in sync: demos import from `registry/default`, and MDX pages display that same code with Vite `?raw` imports.
 
 ## Workflow
 
-1. Write MDX docs with component previews.
-2. Reference source with Vite raw imports.
-3. Describe public APIs with Markdown tables.
-4. Run `npm run registry:build` before publishing registry JSON.
+1. Add a component under `registry/default/ui/`.
+2. Add a demo under `registry/default/examples/`.
+3. Register the item in `registry.json`.
+4. Run `pnpm registry:build` to update `public/r/`.
+5. Write an MDX page under `content/docs/components/`.
 
-```tsx
-import { ComponentTabs, ComponentPreview, ComponentSource } from "@/components/docs";
+## Docs primitives
+
+These components are available in every MDX page:
+
+| Component          | Use for                                |
+| ------------------ | -------------------------------------- |
+| `ComponentTabs`    | Tabbed preview and source layout       |
+| `ComponentPreview` | Live demo surface                      |
+| `ComponentSource`  | Syntax-highlighted source blocks       |
+| `CodeSnippet`      | Package-manager-aware install commands |
+
+```mdx
+<ComponentTabs>
+  <ComponentPreview name="button-demo">
+    <ButtonDemo />
+  </ComponentPreview>
+  <ComponentSource code={buttonSource} language="tsx" title="button.tsx" />
+</ComponentTabs>
+```
+
+## What's included
+
+The template ships with a small set of example components to copy from:
+
+- [Button](/docs/components/button) — variants, sizes, and install commands
+- [Dropdown Menu](/docs/components/dropdown-menu) — nested menu primitives
+- [Select](/docs/components/select) — trigger, content, and items
+- [Scroll Area](/docs/components/scroll-area) — custom scrollbar styling
+- [Separator](/docs/components/separator) — horizontal and vertical dividers
+
+See [Styles](/docs/styles) for the shared theme tokens those components rely on.
+
+## Publish your registry
+
+Before deploying, point install commands and `registry.json` `homepage` at your production URL, then rebuild:
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">pnpm registry:build</CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">npm run registry:build</CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">bun run registry:build</CodeSnippet.Command>
+</CodeSnippet>
+
+Consumers can then install a component with:
+
+```bash
+npx shadcn@latest add https://your-site.com/r/button.json
 ```
