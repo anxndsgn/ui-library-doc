@@ -1,7 +1,5 @@
 import { Tabs } from "@base-ui/react/tabs";
-import { Eye, FileCode2 } from "lucide-react";
 import { Children, isValidElement, useMemo, type ReactElement, type ReactNode } from "react";
-import { buttonVariants } from "registry/default/ui/button";
 import { ComponentSource } from "./component-source";
 
 type TabValue = "preview" | "source";
@@ -20,30 +18,28 @@ export function ComponentTabs({
   const slots = useMemo(() => resolveSlots(children, preview, source), [children, preview, source]);
 
   return (
-    <Tabs.Root className="relative overflow-hidden" defaultValue={defaultValue}>
-      <Tabs.List className="mb-2 flex gap-1" aria-label="Component view">
+    <Tabs.Root
+      className="relative flex flex-col gap-1.5 overflow-hidden"
+      defaultValue={defaultValue}
+    >
+      <Tabs.List
+        className="inline-flex w-fit max-w-full gap-0.5 self-start rounded-md bg-muted p-0.5"
+        aria-label="Component view"
+      >
         <Tabs.Tab
           value="preview"
-          className={buttonVariants({
-            variant: "ghost",
-            size: "lg",
-            className:
-              "min-h-10 px-3 font-bold text-muted-foreground hover:bg-accent hover:text-accent-foreground data-active:bg-accent data-active:text-accent-foreground",
-          })}
+          className={
+            "min-h-8 w-fit rounded-sm bg-transparent px-3 text-xs text-foreground/65 hover:bg-transparent hover:text-foreground data-active:bg-background data-active:font-semibold data-active:text-foreground data-active:shadow-sm"
+          }
         >
-          <Eye size={16} aria-hidden="true" />
           Preview
         </Tabs.Tab>
         <Tabs.Tab
           value="source"
-          className={buttonVariants({
-            variant: "ghost",
-            size: "lg",
-            className:
-              "min-h-10 px-3 font-bold text-muted-foreground hover:bg-accent hover:text-accent-foreground data-active:bg-accent data-active:text-accent-foreground",
-          })}
+          className={
+            "min-h-8 w-fit rounded-sm bg-transparent px-3 text-xs text-foreground/65 hover:bg-transparent hover:text-foreground data-active:bg-background data-active:font-semibold data-active:text-foreground data-active:shadow-sm"
+          }
         >
-          <FileCode2 size={16} aria-hidden="true" />
           Source
         </Tabs.Tab>
       </Tabs.List>

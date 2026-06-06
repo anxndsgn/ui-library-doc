@@ -62,7 +62,7 @@ function CodeSnippetRoot({
       )}
     >
       <Tabs.List
-        className="inline-flex w-fit max-w-full gap-0.5 self-start rounded-md bg-foreground/6 p-0.5"
+        className="inline-flex w-fit max-w-full gap-0.5 self-start rounded-md bg-muted p-0.5"
         aria-label="Package manager"
       >
         {slots.map((slot) => (
