@@ -1,12 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { MenuIcon, PanelLeft } from "lucide-react";
+import { PanelLeft } from "lucide-react";
 import { Button } from "registry/default/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLinkItem,
-  DropdownMenuTrigger,
-} from "registry/default/ui/dropdown-menu";
 import { Separator } from "registry/default/ui/separator";
 
 import { useDocsSidebar } from "./docs-sidebar-context";
@@ -27,26 +21,7 @@ export function DocsHeader() {
           </Link>
         </div>
 
-        <nav
-          className="flex min-w-0 flex-1 items-center justify-end gap-1.5 max-md:hidden"
-          aria-label="Primary"
-        >
-          <Button
-            nativeButton={false}
-            variant="ghost"
-            render={
-              <Link to="/" activeOptions={{ exact: true }} activeProps={{ "data-active": true }} />
-            }
-          >
-            Home
-          </Button>
-          <Button
-            nativeButton={false}
-            variant="ghost"
-            render={<Link to="/docs" activeProps={{ "data-active": true }} />}
-          >
-            Docs
-          </Button>
+        <nav className="flex min-w-0 flex-1 items-center justify-end gap-1.5">
           <Button
             nativeButton={false}
             variant="ghost"
@@ -61,52 +36,11 @@ export function DocsHeader() {
           >
             GitHub
           </Button>
-          <Separator orientation="vertical" />
+          <Separator orientation="vertical" className="h-4" />
           <ThemeToggle />
         </nav>
-        <MobileHeaderMenu />
       </div>
     </header>
-  );
-}
-
-function MobileHeaderMenu() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="ghost" size="icon" className="md:hidden" />}
-        aria-label="Open navigation"
-      >
-        <MenuIcon size={18} aria-hidden="true" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLinkItem
-          href="/"
-          closeOnClick
-          data-active={pathname === "/" ? true : undefined}
-        >
-          Home
-        </DropdownMenuLinkItem>
-        <DropdownMenuLinkItem
-          href="/docs"
-          closeOnClick
-          data-active={pathname.startsWith("/docs") ? true : undefined}
-        >
-          Docs
-        </DropdownMenuLinkItem>
-        <DropdownMenuLinkItem
-          href="https://github.com/anxndsgn"
-          target="_blank"
-          rel="noopener noreferrer"
-          closeOnClick
-          data-active={pathname === "/github" ? true : undefined}
-        >
-          GitHub
-        </DropdownMenuLinkItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
 
