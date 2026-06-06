@@ -1,5 +1,9 @@
-import { Children, isValidElement, type CSSProperties, type ReactNode } from "react";
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { Children, isValidElement, useState, type CSSProperties, type ReactNode } from "react";
+import { cn } from "../../lib/utils";
 import { CopyButton } from "./copy-button";
+
+const COLLAPSE_LINE_THRESHOLD = 16;
 
 const languageAliases: Record<string, string> = {
   bash: "shellscript",
@@ -36,6 +40,10 @@ export function CodeBlock({ code, language, title, children, style, tabIndex }: 
   const highlightedHtml = extracted.highlighted
     ? undefined
     : highlightCodeToHtml(source, resolvedLanguage);
+  const lineCount = countLines(source);
+  const isCollapsible = lineCount > COLLAPSE_LINE_THRESHOLD;
+  const [expanded, setExpanded] = useState(false);
+  const collapsed = isCollapsible && !expanded;
 
   return (
     <figure className="m-0 overflow-hidden rounded-lg bg-muted text-foreground">
@@ -43,22 +51,50 @@ export function CodeBlock({ code, language, title, children, style, tabIndex }: 
         <span>{title ?? displayLanguage}</span>
         <CopyButton value={source} label="Copy code" />
       </figcaption>
-      <pre
-        className="m-0 overflow-auto p-4"
-        style={extracted.highlighted ? style : undefined}
-        tabIndex={tabIndex}
-      >
-        {extracted.highlighted ? (
-          <code className="shiki-code text-[0.86rem] leading-7 text-inherit">
-            {extracted.highlighted}
-          </code>
-        ) : (
-          <code
-            className="text-[0.86rem] leading-7 text-inherit"
-            dangerouslySetInnerHTML={{ __html: highlightedHtml ?? "" }}
+      <div className="relative">
+        <div
+          className={cn(
+            "overflow-x-auto",
+            isCollapsible && "pb-10",
+            collapsed && "max-h-[calc(1.75rem*16+2rem+2.5rem)] overflow-y-hidden",
+          )}
+        >
+          <pre
+            className="m-0 p-4"
+            style={extracted.highlighted ? style : undefined}
+            tabIndex={tabIndex}
+          >
+            {extracted.highlighted ? (
+              <code className="shiki-code text-[0.86rem] leading-7 text-inherit">
+                {extracted.highlighted}
+              </code>
+            ) : (
+              <code
+                className="text-[0.86rem] leading-7 text-inherit"
+                dangerouslySetInnerHTML={{ __html: highlightedHtml ?? "" }}
+              />
+            )}
+          </pre>
+        </div>
+        {collapsed ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-10 h-20 bg-linear-to-t from-muted via-muted/80 to-transparent"
           />
-        )}
-      </pre>
+        ) : null}
+        {isCollapsible ? (
+          <div className="absolute inset-x-0 bottom-0 flex justify-center border-t border-border bg-muted p-2">
+            <button
+              type="button"
+              className="inline-flex items-center gap-1 rounded-sm px-2 py-1 text-xs text-muted-foreground hover:text-foreground"
+              onClick={() => setExpanded((value) => !value)}
+            >
+              {expanded ? <ChevronUpIcon size={14} /> : <ChevronDownIcon size={14} />}
+              {expanded ? "Show less" : "Show more"}
+            </button>
+          </div>
+        ) : null}
+      </div>
     </figure>
   );
 }
@@ -281,4 +317,9 @@ function collectText(value: ReactNode): string {
 
 function stripTrailingNewline(value: string) {
   return value.replace(/\n$/, "");
+}
+
+function countLines(value: string) {
+  if (!value) return 0;
+  return value.split("\n").length;
 }
