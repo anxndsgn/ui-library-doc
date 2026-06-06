@@ -63,8 +63,8 @@ export function SiteHeader() {
           </Button>
           <Separator orientation="vertical" />
           <ThemeToggle />
-          <MobileHeaderMenu />
         </nav>
+        <MobileHeaderMenu />
       </div>
     </header>
   );
@@ -76,9 +76,7 @@ function MobileHeaderMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={
-          <Button variant="ghost" size="icon" className="bg-card text-muted-foreground md:hidden" />
-        }
+        render={<Button variant="ghost" size="icon" className="md:hidden" />}
         aria-label="Open navigation"
       >
         <MenuIcon size={18} aria-hidden="true" />
