@@ -7,6 +7,10 @@
     "@base-ui/react/menu",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "utils",
+    "theme"
+  ],
   "files": [
     {
       "path": "registry/default/ui/dropdown-menu.tsx",

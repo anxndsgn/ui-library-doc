@@ -6,6 +6,10 @@
   "dependencies": [
     "@base-ui/react/separator"
   ],
+  "registryDependencies": [
+    "utils",
+    "theme"
+  ],
   "files": [
     {
       "path": "registry/default/ui/separator.tsx",

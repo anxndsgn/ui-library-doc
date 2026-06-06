@@ -4,6 +4,32 @@
   "homepage": "http://localhost:3000",
   "items": [
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "Shared className utility.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/default/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Theme",
+      "description": "Shared Tailwind CSS variables and base styles for the component registry.",
+      "files": [
+        {
+          "path": "registry/default/styles/style.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -14,7 +40,8 @@
           "type": "registry:ui",
           "target": "components/ui/button.tsx"
         }
-      ]
+      ],
+      "registryDependencies": ["utils", "theme"]
     },
     {
       "name": "button-demo",
@@ -42,7 +69,8 @@
           "type": "registry:ui",
           "target": "components/ui/dropdown-menu.tsx"
         }
-      ]
+      ],
+      "registryDependencies": ["utils", "theme"]
     },
     {
       "name": "dropdown-menu-demo",
@@ -70,7 +98,8 @@
           "type": "registry:ui",
           "target": "components/ui/scroll-area.tsx"
         }
-      ]
+      ],
+      "registryDependencies": ["utils", "theme"]
     },
     {
       "name": "scroll-area-demo",
@@ -98,7 +127,8 @@
           "type": "registry:ui",
           "target": "components/ui/select.tsx"
         }
-      ]
+      ],
+      "registryDependencies": ["utils", "theme"]
     },
     {
       "name": "select-demo",
@@ -126,7 +156,8 @@
           "type": "registry:ui",
           "target": "components/ui/separator.tsx"
         }
-      ]
+      ],
+      "registryDependencies": ["utils", "theme"]
     },
     {
       "name": "separator-demo",

@@ -7,6 +7,10 @@
     "@base-ui/react/select",
     "lucide-react"
   ],
+  "registryDependencies": [
+    "utils",
+    "theme"
+  ],
   "files": [
     {
       "path": "registry/default/ui/select.tsx",

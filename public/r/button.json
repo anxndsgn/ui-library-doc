@@ -3,6 +3,10 @@
   "name": "button",
   "title": "Button",
   "description": "A compact button primitive with variant and size props.",
+  "registryDependencies": [
+    "utils",
+    "theme"
+  ],
   "files": [
     {
       "path": "registry/default/ui/button.tsx",
