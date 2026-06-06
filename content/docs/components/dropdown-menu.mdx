@@ -1,0 +1,57 @@
+---
+title: Dropdown Menu
+description: A floating menu surfaced from a trigger button with items, groups, and submenus.
+component: DropdownMenu
+registry: dropdown-menu
+---
+
+import { DropdownMenuDemo } from "registry/default/examples/dropdown-menu-demo";
+import dropdownMenuDemoSource from "registry/default/examples/dropdown-menu-demo.tsx?raw";
+import dropdownMenuSource from "registry/default/ui/dropdown-menu.tsx?raw";
+
+## Preview
+
+<ComponentTabs>
+  <ComponentPreview name="dropdown-menu-demo">
+    <DropdownMenuDemo />
+  </ComponentPreview>
+  <ComponentSource code={dropdownMenuDemoSource} language="tsx" title="dropdown-menu-demo.tsx" />
+</ComponentTabs>
+
+## Installation
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">
+    pnpm dlx shadcn@latest add http://localhost:3000/r/dropdown-menu.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">
+    npx shadcn@latest add http://localhost:3000/r/dropdown-menu.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">
+    bunx shadcn@latest add http://localhost:3000/r/dropdown-menu.json
+  </CodeSnippet.Command>
+</CodeSnippet>
+
+## Source
+
+<ComponentSource code={dropdownMenuSource} language="tsx" title="dropdown-menu.tsx" />
+
+## Props
+
+### DropdownMenuContent
+
+| Prop         | Type                                                   | Default    | Description                                      |
+| ------------ | ------------------------------------------------------ | ---------- | ------------------------------------------------ |
+| `align`      | `"start" \| "center" \| "end"`                         | `"start"`  | Horizontal alignment relative to the trigger.    |
+| `alignOffset`| `number`                                               | `0`        | Pixel offset along the alignment axis.           |
+| `side`       | `"bottom" \| "top" \| "left" \| "right"`               | `"bottom"` | Preferred side of the trigger to display on.     |
+| `sideOffset` | `number`                                               | `4`        | Pixel offset from the trigger edge.              |
+| `className`  | `string`                                               | -          | Adds custom classes to the popup.                |
+
+### DropdownMenuItem
+
+| Prop        | Type                         | Default     | Description                                      |
+| ----------- | ---------------------------- | ----------- | ------------------------------------------------ |
+| `inset`     | `boolean`                    | `false`     | Adds left padding to align with grouped items.   |
+| `variant`   | `"default" \| "destructive"` | `"default"` | Visual style of the menu item.                   |
+| `className` | `string`                     | -           | Adds custom classes to the item.                 |

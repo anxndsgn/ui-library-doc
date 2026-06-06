@@ -1,0 +1,44 @@
+---
+title: Separator
+description: A visual divider with horizontal and vertical orientations.
+component: Separator
+registry: separator
+---
+
+import { SeparatorDemo } from "registry/default/examples/separator-demo";
+import separatorDemoSource from "registry/default/examples/separator-demo.tsx?raw";
+import separatorSource from "registry/default/ui/separator.tsx?raw";
+
+## Preview
+
+<ComponentTabs>
+  <ComponentPreview name="separator-demo">
+    <SeparatorDemo />
+  </ComponentPreview>
+  <ComponentSource code={separatorDemoSource} language="tsx" title="separator-demo.tsx" />
+</ComponentTabs>
+
+## Installation
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">
+    pnpm dlx shadcn@latest add http://localhost:3000/r/separator.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">
+    npx shadcn@latest add http://localhost:3000/r/separator.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">
+    bunx shadcn@latest add http://localhost:3000/r/separator.json
+  </CodeSnippet.Command>
+</CodeSnippet>
+
+## Source
+
+<ComponentSource code={separatorSource} language="tsx" title="separator.tsx" />
+
+## Props
+
+| Prop          | Type                           | Default        | Description                                  |
+| ------------- | ------------------------------ | -------------- | -------------------------------------------- |
+| `orientation` | `"horizontal" \| "vertical"`   | `"horizontal"` | Direction of the separator.                  |
+| `className`   | `string`                       | -              | Adds custom classes to the separator.        |

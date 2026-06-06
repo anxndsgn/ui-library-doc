@@ -1,0 +1,57 @@
+---
+title: Select
+description: A select dropdown with trigger, content, items, and grouping primitives.
+component: Select
+registry: select
+---
+
+import { SelectDemo } from "registry/default/examples/select-demo";
+import selectDemoSource from "registry/default/examples/select-demo.tsx?raw";
+import selectSource from "registry/default/ui/select.tsx?raw";
+
+## Preview
+
+<ComponentTabs>
+  <ComponentPreview name="select-demo">
+    <SelectDemo />
+  </ComponentPreview>
+  <ComponentSource code={selectDemoSource} language="tsx" title="select-demo.tsx" />
+</ComponentTabs>
+
+## Installation
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">
+    pnpm dlx shadcn@latest add http://localhost:3000/r/select.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">
+    npx shadcn@latest add http://localhost:3000/r/select.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">
+    bunx shadcn@latest add http://localhost:3000/r/select.json
+  </CodeSnippet.Command>
+</CodeSnippet>
+
+## Source
+
+<ComponentSource code={selectSource} language="tsx" title="select.tsx" />
+
+## Props
+
+### SelectTrigger
+
+| Prop        | Type                  | Default     | Description                                  |
+| ----------- | --------------------- | ----------- | -------------------------------------------- |
+| `size`      | `"sm" \| "default"`   | `"default"` | Size of the trigger.                         |
+| `className` | `string`              | -           | Adds custom classes to the trigger.          |
+
+### SelectContent
+
+| Prop                   | Type                                                   | Default    | Description                                        |
+| ---------------------- | ------------------------------------------------------ | ---------- | -------------------------------------------------- |
+| `side`                 | `"bottom" \| "top" \| "left" \| "right"`               | `"bottom"` | Preferred side of the trigger to display on.       |
+| `sideOffset`           | `number`                                               | `4`        | Pixel offset from the trigger edge.                |
+| `align`                | `"start" \| "center" \| "end"`                         | `"center"` | Horizontal alignment relative to the trigger.      |
+| `alignOffset`          | `number`                                               | `0`        | Pixel offset along the alignment axis.             |
+| `alignItemWithTrigger` | `boolean`                                              | `true`     | Aligns the popup width with the trigger width.     |
+| `className`            | `string`                                               | -          | Adds custom classes to the popup.                  |
