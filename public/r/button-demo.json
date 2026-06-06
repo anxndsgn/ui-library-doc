@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/default/examples/button-demo.tsx",
-      "content": "import { Button } from \"../ui/button\";\n\nexport function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <Button>Install package</Button>\n      <Button variant=\"secondary\">View source</Button>\n      <Button variant=\"quiet\">Cancel</Button>\n    </div>\n  );\n}\n",
+      "content": "import { Button } from \"../ui/button\";\n\nexport function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-3\">\n      <Button>Install package</Button>\n      <Button variant=\"secondary\">View source</Button>\n    </div>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/button-demo.tsx"
     }

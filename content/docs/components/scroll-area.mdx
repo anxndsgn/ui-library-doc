@@ -1,0 +1,52 @@
+---
+title: Scroll Area
+description: A custom-styled scrollable container with scrollbar primitives.
+component: ScrollArea
+registry: scroll-area
+---
+
+import { ScrollAreaDemo } from "registry/default/examples/scroll-area-demo";
+import scrollAreaDemoSource from "registry/default/examples/scroll-area-demo.tsx?raw";
+import scrollAreaSource from "registry/default/ui/scroll-area.tsx?raw";
+
+## Preview
+
+<ComponentTabs>
+  <ComponentPreview name="scroll-area-demo">
+    <ScrollAreaDemo />
+  </ComponentPreview>
+  <ComponentSource code={scrollAreaDemoSource} language="tsx" title="scroll-area-demo.tsx" />
+</ComponentTabs>
+
+## Installation
+
+<CodeSnippet>
+  <CodeSnippet.Command value="pnpm">
+    pnpm dlx shadcn@latest add http://localhost:3000/r/scroll-area.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="npm">
+    npx shadcn@latest add http://localhost:3000/r/scroll-area.json
+  </CodeSnippet.Command>
+  <CodeSnippet.Command value="bun">
+    bunx shadcn@latest add http://localhost:3000/r/scroll-area.json
+  </CodeSnippet.Command>
+</CodeSnippet>
+
+## Source
+
+<ComponentSource code={scrollAreaSource} language="tsx" title="scroll-area.tsx" />
+
+## Props
+
+### ScrollArea
+
+| Prop        | Type        | Default | Description                                  |
+| ----------- | ----------- | ------- | -------------------------------------------- |
+| `className` | `string`    | -       | Adds custom classes to the root container.   |
+
+### ScrollBar
+
+| Prop          | Type                       | Default      | Description                                  |
+| ------------- | -------------------------- | ------------ | -------------------------------------------- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Orientation of the scrollbar.                |
+| `className`   | `string`                   | -            | Adds custom classes to the scrollbar.        |

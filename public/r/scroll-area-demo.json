@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-demo",
+  "title": "Scroll Area Demo",
+  "description": "A small usage example for the scroll area primitive.",
+  "registryDependencies": [
+    "scroll-area"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/scroll-area-demo.tsx",
+      "content": "import { ScrollArea } from \"../ui/scroll-area\";\n\nconst tags = Array.from({ length: 50 }).map((_, i) => `Tag ${i + 1}`);\n\nexport function ScrollAreaDemo() {\n  return (\n    <ScrollArea className=\"h-72 w-48 rounded-lg border border-border p-4\">\n      <div className=\"space-y-2\">\n        <h4 className=\"text-sm font-medium\">Tags</h4>\n        {tags.map((tag) => (\n          <div key={tag} className=\"text-sm text-muted-foreground\">\n            {tag}\n          </div>\n        ))}\n      </div>\n    </ScrollArea>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/scroll-area-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

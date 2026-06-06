@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @source "../../content/**/*.{md,mdx}";
 @source "../../registry/**/*.{ts,tsx}";
 
@@ -181,6 +182,7 @@
   * {
     border-color: var(--border);
     outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    scroll-behavior: smooth;
   }
 
   html {
@@ -227,11 +229,5 @@
     :root:not([data-theme]) .shiki-code span {
       color: var(--shiki-dark, var(--shiki-light, inherit));
     }
-  }
-
-  .docs-preview-grid {
-    background-color: color-mix(in oklab, var(--muted) 55%, transparent);
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 18px 18px;
   }
 }

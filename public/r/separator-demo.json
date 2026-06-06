@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-demo",
+  "title": "Separator Demo",
+  "description": "A small usage example for the separator primitive.",
+  "registryDependencies": [
+    "separator"
+  ],
+  "files": [
+    {
+      "path": "registry/default/examples/separator-demo.tsx",
+      "content": "import { Separator } from \"../ui/separator\";\n\nexport function SeparatorDemo() {\n  return (\n    <div className=\"w-80 space-y-2\">\n      <div className=\"flex h-5 items-center space-x-4 text-sm\">\n        <div>Blog</div>\n        <Separator orientation=\"vertical\" />\n        <div>Docs</div>\n        <Separator orientation=\"vertical\" />\n        <div>Source</div>\n      </div>\n      <Separator />\n      <div className=\"flex h-5 items-center space-x-4 text-sm\">\n        <div>Overview</div>\n        <Separator orientation=\"vertical\" />\n        <div>Analytics</div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/separator-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -29,6 +29,118 @@
           "target": "components/button-demo.tsx"
         }
       ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A floating menu surfaced from a trigger button with items, groups, and submenus.",
+      "dependencies": ["@base-ui/react/menu", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/default/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-demo",
+      "type": "registry:component",
+      "title": "Dropdown Menu Demo",
+      "description": "A small usage example for the dropdown menu primitive.",
+      "registryDependencies": ["dropdown-menu", "button"],
+      "files": [
+        {
+          "path": "registry/default/examples/dropdown-menu-demo.tsx",
+          "type": "registry:component",
+          "target": "components/dropdown-menu-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A custom-styled scrollable container with scrollbar primitives.",
+      "dependencies": ["@base-ui/react/scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area-demo",
+      "type": "registry:component",
+      "title": "Scroll Area Demo",
+      "description": "A small usage example for the scroll area primitive.",
+      "registryDependencies": ["scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/examples/scroll-area-demo.tsx",
+          "type": "registry:component",
+          "target": "components/scroll-area-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A select dropdown with trigger, content, items, and grouping primitives.",
+      "dependencies": ["@base-ui/react/select", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/default/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select-demo",
+      "type": "registry:component",
+      "title": "Select Demo",
+      "description": "A small usage example for the select primitive.",
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/default/examples/select-demo.tsx",
+          "type": "registry:component",
+          "target": "components/select-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A visual divider with horizontal and vertical orientations.",
+      "dependencies": ["@base-ui/react/separator"],
+      "files": [
+        {
+          "path": "registry/default/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator-demo",
+      "type": "registry:component",
+      "title": "Separator Demo",
+      "description": "A small usage example for the separator primitive.",
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/default/examples/separator-demo.tsx",
+          "type": "registry:component",
+          "target": "components/separator-demo.tsx"
+        }
+      ]
     }
   ]
 }
