@@ -21,7 +21,7 @@ export function ComponentTabs({
 
   return (
     <Tabs.Root className="relative overflow-hidden" defaultValue={defaultValue}>
-      <Tabs.List className="mb-2 flex gap-1 overflow-x-auto" aria-label="Component view">
+      <Tabs.List className="mb-2 flex gap-1" aria-label="Component view">
         <Tabs.Tab
           value="preview"
           className={buttonVariants({
