@@ -123,11 +123,11 @@ function DocsMobileNav({ navTree, currentUrl }: { navTree: DocsNavTree; currentU
   return (
     <Drawer.Root open={isOpen} onOpenChange={setOpen} swipeDirection="left">
       <Drawer.Portal>
-        <Drawer.Backdrop className="fixed inset-0 z-50 min-h-dvh bg-foreground opacity-[calc(var(--backdrop-opacity)*(1-var(--drawer-swipe-progress)))] transition-opacity duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] [--backdrop-opacity:0.25] data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 md:hidden" />
+        <Drawer.Backdrop className="fixed inset-0 z-50 min-h-dvh bg-foreground opacity-[calc(var(--backdrop-opacity)*(1-var(--drawer-swipe-progress)))] transition-opacity ease-[cubic-bezier(0.32,0.72,0,1)] [--backdrop-opacity:0.25] data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 md:hidden" />
         <Drawer.Viewport className="fixed inset-0 z-50 flex items-stretch justify-start p-(--viewport-padding) [--viewport-padding:0px] md:hidden">
           <Drawer.Popup
             id={drawerId}
-            className="grid h-full w-[min(86vw,320px)] [transform:translateX(var(--drawer-swipe-movement-x))] touch-auto grid-rows-[auto_minmax(0,1fr)] overflow-hidden overscroll-contain border-r border-border bg-background text-foreground shadow-2xl transition-transform duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-ending-style:[transform:translateX(calc(-100%-var(--viewport-padding)-2px))] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:[transform:translateX(calc(-100%-var(--viewport-padding)-2px))] data-swiping:duration-0 data-swiping:select-none"
+            className="grid h-full w-[min(86vw,320px)] transform-[translateX(var(--drawer-swipe-movement-x))] touch-auto grid-rows-[auto_minmax(0,1fr)] overflow-hidden overscroll-contain bg-background text-foreground shadow-2xl transition-transform ease-[cubic-bezier(0.32,0.72,0,1)] data-ending-style:transform-[translateX(calc(-100%-var(--viewport-padding)-2px))] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:transform-[translateX(calc(-100%-var(--viewport-padding)-2px))] data-swiping:duration-0 data-swiping:select-none"
           >
             <Drawer.Content className="grid min-h-0 grid-rows-[auto_minmax(0,1fr)]">
               <div className="flex min-h-14 items-center justify-between gap-3 border-b border-border px-4">
