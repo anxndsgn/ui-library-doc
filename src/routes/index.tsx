@@ -1,8 +1,12 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Box, Terminal } from "lucide-react";
 import { Button } from "registry/default/ui/button";
+import { SITE_NAME, buildSeoMeta, ogImageUrl } from "../lib/seo";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: buildSeoMeta({ title: SITE_NAME, image: ogImageUrl() }),
+  }),
   component: HomePage,
 });
 

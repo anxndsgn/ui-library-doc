@@ -2,6 +2,7 @@
 import { HeadContent, Link, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { DocsSidebarProvider } from "../components/site/docs-sidebar-context";
+import { SITE_NAME, buildSeoMeta, ogImageUrl } from "../lib/seo";
 import { legacyThemeStorageKey, uiStorageKey } from "../lib/theme";
 import appCss from "../styles/app.css?url";
 
@@ -35,11 +36,8 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "color-scheme", content: "light dark" },
-      { title: "Components Site Template" },
-      {
-        name: "description",
-        content: "A TanStack Start documentation template for React component libraries.",
-      },
+      { title: SITE_NAME },
+      ...buildSeoMeta({ title: SITE_NAME, image: ogImageUrl() }),
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -64,9 +62,7 @@ function RootDocument({ children }: { children: ReactNode }) {
       </head>
       <body>
         <DocsSidebarProvider>
-          <div className="h-dvh min-h-0 overflow-auto">
-            {children}
-          </div>
+          <div className="h-dvh min-h-0 overflow-auto">{children}</div>
         </DocsSidebarProvider>
         <Scripts />
       </body>
