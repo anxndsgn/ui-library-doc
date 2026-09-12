@@ -23,6 +23,9 @@ importers:
       '@takumi-rs/wasm':
         specifier: ^1.8.4
         version: 1.8.4(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@tanstack/highlight':
+        specifier: 0.1.0
+        version: 0.1.0
       '@tanstack/react-router':
         specifier: ^1.170.11
         version: 1.170.11(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -1529,6 +1532,10 @@ packages:
 
   '@takumi-rs/wasm@1.8.4':
     resolution: {integrity: sha512-h+c3MuYM0OHlPjRNUoPCBPn4F8FdtBn/6QbhNaqz8Oy9U1Zg/8vww6odnpwoQUDUCnwpdKHWPKeqR3fUO+bULQ==}
+
+  '@tanstack/highlight@0.1.0':
+    resolution: {integrity: sha512-B/NdJETsgoQ7ludUbflIiYQk74bE6VSgP3kLR99P1OsRX1Gepr3EVg6oVLRZ+duKWs+P4lrhWC4vVJsrRSnV2g==}
+    engines: {node: '>=18'}
 
   '@tanstack/history@1.162.0':
     resolution: {integrity: sha512-79pf/RkhteYZTRgcR4F9kbk84P2N8rugQJswxfIqovlbRiT3yI7eBE+5QorIrZaOKktsgzRlXh1l/du/xpl4iA==}
@@ -4847,6 +4854,8 @@ snapshots:
     transitivePeerDependencies:
       - react
       - react-dom
+
+  '@tanstack/highlight@0.1.0': {}
 
   '@tanstack/history@1.162.0': {}
 
